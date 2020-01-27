@@ -1,0 +1,224 @@
+#include "header.h"
+
+#define LEN 127
+
+static pthread_mutex_t mtx, mtx1;// = PTHREAD_MUTEX_INITIALIZER;
+/* Thread for even numbers */
+void *thread1(void *arg) 
+{
+    mqd_t mqd;
+    struct mq_attr attr;
+    struct mq_attr *attrp;
+    attrp = NULL;
+    int num;
+    char *file = (char *) arg;
+
+    if ((mqd - 1) == (mqd = mq_open(file, O_CREAT | O_RDWR, 
+                    S_IRUSR | S_IWUSR, attrp))) {
+        printf("mq_open failed in thread1\n");
+        exit(EXIT_FAILURE);
+    }
+
+    char *str = (char *) malloc(LEN);
+    if (NULL == str) {
+        printf("malloc failed in thread1\n");
+        exit(EXIT_FAILURE);
+    }
+    while (1) {
+
+        if (0 != pthread_mutex_lock(&mtx)) {
+            printf("pthread_mutex_lock failed\n");
+            exit(EXIT_FAILURE);
+        }
+
+        if (-1 == mq_getattr(mqd, &attr)) {
+            printf("mq_getattr failed in thread1\n");
+            exit(EXIT_FAILURE);
+        }
+
+        if (-1 == (mq_receive(mqd, str, attr.mq_msgsize, 0))) {
+            printf("mq_send failed in thread1\n");
+            exit(EXIT_FAILURE);
+        }
+
+        num = atoi(str);
+
+        if (0 == (num % 2)) {
+            printf("IN even -------> %d\n", num);
+        } else {
+
+            if (-1 == (mq_send(mqd, str, strlen(str), 0))) {
+                printf("mq_send failed in thread1\n");
+                exit(EXIT_FAILURE);
+            }
+
+        }
+
+        if (0 != pthread_mutex_unlock(&mtx)) {
+            printf("pthread_mutex_unlock failed\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
+/* Thread for odd numbers */
+void *thread2(void *argv)
+{
+    mqd_t mqd;
+    struct mq_attr attr;
+    struct mq_attr *attrp;
+    attrp = NULL;
+    int num;
+    char *file = (char *) argv;
+
+    if ((mqd - 1) == (mqd = mq_open(file, O_CREAT | O_RDWR, 
+                    S_IRUSR | S_IWUSR, attrp))) {
+        printf("mq_open failed in thread2\n");
+        exit(EXIT_FAILURE);
+    }
+
+    char *str = (char *) malloc(LEN);
+    if (NULL == str) {
+        printf("malloc failed in thread2\n");
+        exit(EXIT_FAILURE);
+    }
+
+    while (1) {
+
+        if (0 != pthread_mutex_lock(&mtx1)) {
+            printf("pthread_mutex_lock failed\n");
+            exit(EXIT_FAILURE);
+        }
+
+        if (-1 == mq_getattr(mqd, &attr)) {
+            printf("mq_getattr failed in thread2\n");
+            exit(EXIT_FAILURE);
+        }
+
+        if (-1 == (mq_receive(mqd, str, attr.mq_msgsize, 0))) {
+            printf("mq_send failed in thread2\n");
+            exit(EXIT_FAILURE);
+        }
+
+        num = atoi(str);
+
+        if (1 == (num % 2)) {
+            printf("IN odd -> %d\n", num);
+        } else {
+
+            if (-1 == (mq_send(mqd, str, strlen(str), 0))) {
+                printf("mq_send failed in thread2\n");
+                exit(EXIT_FAILURE);
+            }
+        }
+
+        if (0 != pthread_mutex_unlock(&mtx1)) {
+            printf("pthread_mutex_unlock failed\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
+void strrev(char *str) {
+    char temp = NULL;
+    int start = 0;
+    int len = 0;
+    for (; str[len]; len++);
+    for (len = len - 1; len > start; start++, --len) {
+        temp = str[start]; 
+        str[start] = str[len];
+        str[len] = temp;
+    } 
+}
+
+char str1[LEN];
+void *itoa(int num) {
+    int var = num;
+    int len = 0;
+
+    while (var) {
+        str1[len++] = ((var % 10) + '0');
+        var = var / 10;
+    }
+
+    strrev(str1);
+    return str1;
+}
+
+int main(int argc, char *argv[])
+{
+    if (3 != argc) {
+        printf("Usage: %s <mq_file> \n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    
+    mqd_t mqd;
+    struct mq_attr *attrp;
+    attrp = NULL;
+    pthread_t th_id1;
+    void *res;
+    pthread_t th_id2;
+    int loop;
+    char *str;
+    int globe = atoi(argv[2]);
+
+    if (0 != pthread_mutex_init(&mtx, NULL)) {
+        printf("pthread_mutex_init failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (0 != pthread_mutex_init(&mtx1, NULL)) {
+        printf("pthread_mutex_init failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (0 != pthread_mutex_lock(&mtx1)) {
+            printf("pthread_mutex_lock failed\n");
+            exit(EXIT_FAILURE);
+    }
+
+    if (0 != pthread_create(&th_id1, NULL, thread1, argv[1])) {
+        printf("pthread_create is failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (0 != pthread_create(&th_id2, NULL, thread2, argv[1])) {
+        printf("pthread_create is failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if ((mqd - 1) == (mqd = mq_open(argv[1], O_CREAT | O_RDWR, 
+                    S_IRUSR | S_IWUSR, attrp))) {
+        printf("mq_open failed in thread1\n");
+        exit(EXIT_FAILURE);
+    }
+
+//    for (loop = 0; loop < 100; loop++) {
+    while (globe--) {
+        str = itoa(rand() % 1000);
+
+        if (-1 == mq_send(mqd, str, strlen(str), 0)) {
+            printf("mq_send failed\n");
+            exit(EXIT_FAILURE);
+        }
+//            wait(NULL);
+//        sleep(1);
+
+/*        if (0 != pthread_join(th_id1, &res)) {
+            printf("pthread_join failed\n");
+            exit(EXIT_FAILURE);
+        }
+
+        if (1 == (int) res) continue;
+
+        if (0 != pthread_join(th_id1, &res)) {
+            printf("pthread_join failed\n");
+            exit(EXIT_FAILURE);
+        }
+
+        if (1 == (int) res) continue; 
+ */        
+    }
+
+    pthread_exit(NULL); 
+}

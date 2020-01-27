@@ -1,0 +1,39 @@
+HDIR = ./Header
+SDIR = Source
+ODIR = Object
+LDIR = Library
+TDIR = Test 
+EDIR = Exec
+
+lib = liballoc.a
+
+CC = gcc
+CFLAGS = -g -I $(HDIR)
+
+HDR  = alloc.h
+HEAD = $(patsubst %, $(HDIR)/%, $(HDR))
+
+OBJ = $(patsubst $(SDIR)/%.c, %.c, $(wildcard $(SDIR)/*.c))
+_OBJ = $(patsubst %.c, $(ODIR)/%.o, $(OBJ))
+
+TEST = $(patsubst Test/%.c, %.c, $(wildcard Test/*.c))
+_TEST = $(patsubst %.c, $(ODIR)/%.o, $(TEST))
+$(info $(_TEST))
+
+IN = $(patsubst Test/%.c, $(EDIR)/%.out, $(wildcard Test/*.c))
+
+all:$(LDIR)/$(lib) $(IN) 
+
+$(ODIR)/%.o:$(SDIR)/%.c
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(IN):Test/*.c
+	$(CC) -o $@ -static $(CFLAGS) $< -L $(LDIR) -l alloc
+
+$(LDIR)/$(lib):$(_OBJ)
+	ar -rcs $@ $^
+
+.PHONY:clean all ty
+
+clean:
+	rm -rf $(ODIR)/*.o $(EDIR)/* $(LDIR)/*

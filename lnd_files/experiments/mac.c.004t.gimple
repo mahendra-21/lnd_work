@@ -1,0 +1,25 @@
+main ()
+{
+  int D.1832;
+  int D.1833;
+  unsigned int d.0;
+  int D.1835;
+  int d;
+
+  printf ("%d\n", 7);
+  d = -1;
+  goto <D.1829>;
+  <D.1828>:
+  D.1832 = d + 1;
+  D.1833 = array[D.1832];
+  printf ("%d\n", D.1833);
+  d = d + 1;
+  <D.1829>:
+  d.0 = (unsigned int) d;
+  if (d.0 <= 5) goto <D.1828>; else goto <D.1830>;
+  <D.1830>:
+  D.1835 = 0;
+  return D.1835;
+}
+
+

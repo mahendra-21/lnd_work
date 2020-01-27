@@ -1,0 +1,120 @@
+    1  passwd 
+    2  wget ftp://172.16.2.4/linux/u32.sh
+    3  sh u32.sh 
+    4  vim u32.sh 
+    5  rm u32.sh 
+    6  vim /etc/hosts
+    7  vim /etc/hostname 
+    8  vim /etc/sudoers
+    9  ls
+   10  ll
+   11  cd /
+   12  ll
+   13  cd usr/
+   14  ll
+   15  cd 
+   16  ls
+   17  wget ftp://172.16.2.4/Linux/mail.sh
+   18  ls
+   19  cd 
+   20  userdel -r test
+   21  pkill -U test
+   22  userdel -r test
+   23  reboot 
+   24  adduser bandi
+   25  vim /etc/hosts
+   26  vim /etc/hostname 
+   27  vim /etc/sudoers
+   28  ll
+   29  cd /home/
+   30  ll
+   31  tar -cvf bandi.tar bandi/
+   32  ifconfig 
+   33  ls
+   34  scp -r bandi.tar bandi@172.16.5.81:/home/bandi/
+   35  ll
+   36  ifconfig 
+   37  scp -r bandi.tar bandi@172.16.5.81:/home/bandi/
+   38  ssh-keygen -f /root/.ssh/known_hosts -R 172.16.5.81
+   39  scp -r bandi.tar bandi@172.16.5.81:/home/bandi/
+   40  scp -r bandi.tar bandi@172.16.5.83:/home/bandi/
+   41  halt
+   42  passwd 
+   43  passwd bandi 
+   44  fdisk /dev/sda
+   45  free -m
+   46  vim /etc/fstab
+   47  blkid 
+   48  swapoff /dev/sda5 
+   49  swapoff all
+   50  swapoff -a
+   51  free -m
+   52  fdisk -l
+   53  fdisk /dev/sda
+   54  fdisk -l
+   55  fdisk /dev/sda
+   56  vim /etc/mtab
+   57  fdisk -l
+   58  mount /dev/sda3 /mnt/
+   59  fdisk -l
+   60  vim /etc/mtab
+   61  partprobe -s /dev/sda
+   62  reboot 
+   63  vim /etc/mtab
+   64  fdisk -l
+   65  mount /dev/sda3 /mnt/
+   66* vim /etc/
+   67  mount /dev/sda3 /mnt/
+   68  man mkfs
+   69  mkfs -t ext4 /dev/sda3
+   70  df -h
+   71  mount /dev/sda3 /mnt/
+   72  df -h
+   73  free -m
+   74  umount /mnt 
+   75  df -h
+   76  mkswap /dev/sda3 
+   77  free -m
+   78  swapon all
+   79  swapon -a
+   80  free -m
+   81  swapon /dev/sda3 
+   82  free -m
+   83  swapon -l
+   84  man swapop
+   85  man swapon
+   86  swapon -s
+   87  swapoff -a
+   88  swapon -s
+   89  swapon -a
+   90  swapon -s
+   91  vim /etc/fstab
+   92  blkid 
+   93  vim /etc/fstab
+   94  swapon -a
+   95  swapon -s
+   96  man fstab
+   97  vim /etc/fstab
+   98  swapoff -a
+   99  swapon -s
+  100  swapon -a
+  101  swapon -s
+  102  vim /etc/fstab
+  103  blkid 
+  104  man filesystem
+  105  man filesystems
+  106  df -i
+  107  vim /proc/mounts 
+  108  vim /etc/mtab
+  109  cd /proc/
+  110  ls
+  111  cd fs/
+  112  l
+  113  cd ..\
+  114  cd ..
+  115  vim uptime 
+  116  history
+  117  history > lakshma.txt
+  118  sudo history > lakshma.txt
+  119  su history > lakshma.txt
+  120  history > /home/bandi/lakshma.txt

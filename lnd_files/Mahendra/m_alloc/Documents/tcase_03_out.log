@@ -1,0 +1,12 @@
+In this test_03.c test program invoking dyn_alloc() function with 0-bytes,
+-1 bytes, more than 1024 bytes. For these output is like this:
+
+--> ptr Addr. -> 0x80ecf40   (for 0 bytes)
+
+(For -1 bytes, here dyn_alloc() function failed to allocate memory, because 
+-1 treated as its 2's complement value it is about 4G.)
+--> No Memory To Allocate
+--> dyn_alloc failed - asked for -1 bytes
+
+--> No Memory To Allocate (for 1025 bytes, more than 1024 bytes)
+--> dun_alloc failed - asked for 1025 bytes

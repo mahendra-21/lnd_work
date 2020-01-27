@@ -1,0 +1,7 @@
+#include "header.h"
+
+void clean(void)
+{
+	printf("In CLEAN..\n");
+
+}

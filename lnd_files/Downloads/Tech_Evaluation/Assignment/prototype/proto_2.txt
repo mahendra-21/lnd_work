@@ -1,0 +1,77 @@
+15
+int str_len (const char *)
+{
+	//Write your code here
+}
+
+char *str_cpy (char *dest, const char *src)
+{
+	//Write your code here
+}
+
+char * chr_addr_instr (char *buf, char ch)
+{
+    //Write your code here
+}
+
+char * s_append (char *str1, char *str2)
+{
+	//Write your code here
+}
+
+char * sn_append (char *str1, char *str2, int n)
+{
+	//Write your code here
+}
+
+char str_cmp (char *str1, char * str2)
+{
+	//Write your code here
+}
+
+int str_casecmp (char *str1, char *str2)
+{
+	//Write your code here
+}
+
+size_t str_spn (const char *buf1, const char *buf2)
+{
+	//Write your code here
+}
+
+char * str_tok (const char *buf, const char *delim)
+{
+	//Write your code here
+}
+
+int palindrome (char *str)
+{
+	//Write your code here
+}
+
+char *str_rev (char *str)
+{
+	//Write your code here
+}
+
+char *str_squeeze (char *str)
+{
+	//Write your code here
+}
+
+int str_rot (const char *str, const char *rstr)
+{
+	//Write your code here
+}
+
+char *rem_sstr (char *str, const char *sstr)
+{
+	//Write your code here
+}
+
+char * insert_char (char *str, const char ch, int pos)
+{
+	//Write your code here
+}
+
+

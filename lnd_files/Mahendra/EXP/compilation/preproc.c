@@ -1,0 +1,187 @@
+#if MAC == 16
+
+#include <stdio.h>
+
+#define MC "hello %s
+/* warning: missing terminating " character [enabled by default] */
+
+int main(void)
+{
+    printf(MC, MC);
+    return 0;
+}
+
+#elif MAC == 15
+
+#include <stdio.h>
+
+#define NANO 10
+#define NAN NANO
+#define NANO NAN
+/* warning: "NANO" redefined [enabled by default] */
+
+#elif MAC == 14
+
+#include
+/* error: #include expects "FILENAME" or <FILENAME> */
+
+int main(void)
+{
+    printf("Hello, Global\n");
+    return 0;
+}
+
+#elif MAC == 13
+
+#define MAX 1
+#define MAX 2 
+
+int main(void)
+{
+    printf("MAX = %d\n", MAX);
+    return 0;
+}
+
+elif MAC == 12
+
+#define MAX /* It won't generate any error & warning */
+
+int main(void)
+{
+    printf("MAX = %d\n", MAX);
+    return 0;
+}
+
+#elif MAC == 11
+
+//#if 
+/* error: #if with no expression */
+
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Hello, Global\n");
+    return 0;
+}
+ 
+#elif MAC == 10
+
+#include </*file*/stdio.h>
+/* fatal error: /*file*/stdio.h: No such file or directory */
+
+int main(void)
+{
+    printf("Hello, Global\n");
+    return 0;
+}
+
+#elif MAC == 9
+
+#include / <stdio.h>
+/* error: #include expects "FILENAME" or <FILENAME> */
+/* It is giving error what ever we put in b/w #include & <stdio.h> */
+
+int main(void)
+{
+    printf("Hello, Global\n");
+    return 0;
+}
+
+#elif MAC == 8
+
+#include stdio.h>
+/* error: #include expects "FILENAME" or <FILENAME> */
+
+int main(void)
+{
+    printf("Hello, Global\n");
+    return 0;
+}
+
+#elif MAC == 7
+
+#include <stdio.h
+/* error: missing terminating > character */
+
+int main(void)
+{
+    printf("Hello, Global\n");
+    return 0;
+}
+
+#elif MAC == 6
+
+#include <stdio.h>
+/*hello mahendra /* again */ 
+*/      // It won't give any error's and warnings
+
+int main(void)
+{
+    printf("Hello, Global\n");
+    return 0;
+}
+
+#elif MAC == 5
+*/ comment error
+/comment error // This won't give any error in preprocessor
+
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Hello, Mahendra\n");
+    return 0;
+}
+
+#elif MAC == 4
+#   include < stdio.h>
+//fatal error : Inside < > it won't allow anything except file name,
+//              it gives msg like no such file or directory
+
+int main(void)
+{
+    printf("Hello, Mahendra\n");
+    return 0;
+}
+
+#elif MAC == 3
+#   // It don't give any error or warning in preprocessor stage
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Hello, Mahendra\n");
+    return 0;
+}
+
+#elif MAC == 2
+# <stdio.h>
+//Invalid preprocessing directive
+
+int main(void)
+{
+    printf("Hello, Mahendra\n");
+    return 0;
+}
+
+#elif MAC == 1
+#in cude <stdio.h>
+//Invalid preprocessing directive
+
+int main(void)
+{
+    printf("Hello, Mahendra\n");
+    return 0;
+}
+
+#elif MAC == 0
+include <stdio.h>
+// It don't give any error or warning in preprocessor stage
+
+int main(void)
+{
+    printf("Hello, Mahendra\n");
+    return 0;
+}
+#endif

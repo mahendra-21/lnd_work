@@ -1,0 +1,17 @@
+In tcase_04.c test case program continuously allocating memory _itr times.
+For that meta_data is like this:
+
+11101110 11101110 11101110 11101110 11101110 00000000 00000000 00000000 
+
+
+After allocation of _itr times, freeing last allocated memory space to the ptr.
+For that meta_data is like this:
+
+11101110 11101110 11101110 11100000 11101110 00000000 00000000 00000000 
+
+For this expected behaviour is like this:
+
+11101110 11101110 11101110 11101110 11100000 00000000 00000000 00000000 
+
+In this case dyn_free() function not giving expected output. I'm working on
+this bug in dyn_free() function. I'll resolve this soon...

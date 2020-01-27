@@ -1,0 +1,51 @@
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    This assignment is to allocate dynamic memory to the user in a memory
+ optimizated way.
+--------------------------
+ In this directory contains :
+--------------------------
+-> library directory
+    which having the file's dyn_alloc.c, dyn_free.c, binary_print.c
+    These are the Own implemented malloc & free functions.
+
+-> include directory
+    which having alloc.h header file. This header file contains the function
+    declarations needed by the user.
+
+-> object directory
+    which having the relocatable object files generated while building
+    the library directory files. These files are using while creating the
+    library(static).
+
+-> testfiles directory
+    which having all the test file's for the dun_malloc function.
+
+-> executabls directory
+    which having all the executables generated to the test files.
+
+-> Makefile 
+    It builds the all relocatable object file's to the library directory files 
+    and with the help of all ROF's in object directory creating static library.
+    
+    And this Makefile also builds executable's to all the testfiles directory 
+    files.
+
+    For meta_data information in each test case in Makefile give DEF value '1'.
+    By default it is 0.
+
+    ROF - Relocatable Object File
+
+-> Documents
+    Which having the Doxygen configure file. To run this file use command
+    "doxygen".
+
+    In Doxygen configure file: SOURCE_BROWSER is disabled (Source program 
+    is not visible in the browser)
+
+    To see Documentation in the browser run the doxygen command in Documents
+    directory. After some time it will genarate html (default enabled) format
+    directory. With in this html directory run the command 
+
+    " furefox index.html " here you can see documentation in the browser.
+
+    And also this directory contains all output log files for each test case.

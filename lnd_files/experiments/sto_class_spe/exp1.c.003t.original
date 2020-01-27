@@ -1,0 +1,19 @@
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  int x_var = 3;
+
+    int x_var = 3;
+  var = var + x_var;
+  printf ((const char * restrict) "number = %d\n", var);
+  if (var <= 50)
+    {
+      return 0;
+    }
+  main ();
+  return 0;
+}
+

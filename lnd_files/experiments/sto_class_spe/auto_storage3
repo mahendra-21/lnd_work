@@ -1,0 +1,98 @@
+	.file	"auto_storage3.c"
+	.section	.rodata
+.LC0:
+	.string	"number = %d\n"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	pushl	%edi
+	pushl	%esi
+	pushl	%ebx
+	andl	$-16, %esp
+	subl	$32, %esp
+	.cfi_offset 7, -12
+	.cfi_offset 6, -16
+	.cfi_offset 3, -20
+	movl	$10, %ebx
+	movl	$20, %edi
+	movl	$30, 28(%esp)
+	movl	$40, 24(%esp)
+	movl	$50, 20(%esp)
+	movl	$60, 16(%esp)
+	movl	$70, 12(%esp)
+	movl	$80, %esi
+	movl	%ebx, (%esp)
+	call	fun
+	movl	%edi, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	movl	28(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	movl	24(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	movl	20(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	movl	16(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	movl	12(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	movl	%esi, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	movl	$0, %eax
+	leal	-12(%ebp), %esp
+	popl	%ebx
+	.cfi_restore 3
+	popl	%esi
+	.cfi_restore 6
+	popl	%edi
+	.cfi_restore 7
+	popl	%ebp
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.globl	fun
+	.type	fun, @function
+fun:
+.LFB1:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$24, %esp
+	movl	8(%ebp), %eax
+	movl	%eax, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	leave
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+.LFE1:
+	.size	fun, .-fun
+	.ident	"GCC: (Ubuntu 4.8.4-2ubuntu1~14.04.1) 4.8.4"
+	.section	.note.GNU-stack,"",@progbits

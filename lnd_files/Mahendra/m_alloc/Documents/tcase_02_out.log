@@ -1,0 +1,28 @@
+In tcase_02.c test program invoking dyn_alloc() function with 7-bytes 
+& 10-bytes. For this meta_data is like following:
+
+ptr1 Addr. -> 0x80ecf40 (for 7-byes)
+ptr2 Addr. -> 0x80ecf48 (for 10-bytes)
+
+11011100 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+
+After freeing the memory space allocated to the ptr2 by calling dyn_free()
+function. for this meta_data is like following:
+
+11000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+
+After that allocating 9-bytes:
+
+ptr3 Addr. -> 0x80ecf48 (for 9-bytes)
+11011100 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+
+Again invoking dyn_free() function to freeing the memory space allocated to 
+the ptr1(7-bytes).
+
+00011100 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+
+Again invoking dyn_alloc() function for 23-bytes.
+
+ptr4 Addr. -> 0x0x80ecf54 (for 23-bytes)
+
+00011101 11111000 00000000 00000000 00000000 00000000 00000000 00000000

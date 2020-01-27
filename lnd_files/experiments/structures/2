@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+#if 1
+
+struct pad {
+    short svar;
+    char cvar;
+    float fvar;
+    double dvar;
+    int ivar;
+}ding;
+
+struct pad1 {
+//    struct pad ding;
+    char cvar1;
+    char cvar2;
+    int ivar3;
+} ding1;
+
+int main(void)
+{
+
+    printf("size of ding in main  = %d\n", sizeof (ding));
+    printf("size of ding in main  = %d\n", sizeof (ding1));
+
+    return 0;
+}
+#endif

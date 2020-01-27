@@ -1,0 +1,113 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BITS	rotate_bits_06/header/header.h	7;"	d
+LIMIT	assign_invert_11/header/header.h	5;"	d
+LIMIT	assignment_10/header/header.h	4;"	d
+LIMIT	bitcopy_03/header/header.h	4;"	d
+LIMIT	bitwise_swap_01/header/header.h	3;"	d
+LIMIT	bitwise_swap_02/header/header.h	3;"	d
+LIMIT	count_bits_07/header/header.h	3;"	d
+LIMIT	lead_trail_bits_08/header/header.h	7;"	d
+LIMIT	mac_getbit_12/header/header.h	5;"	d
+LIMIT	macro_bits_09/header/header.h	7;"	d
+LIMIT	macro_set_bit_05/header/header.h	3;"	d
+LIMIT	rotate_bits_06/header/header.h	5;"	d
+LIMIT	toggle_ev_od_bits_04/header/header.h	3;"	d
+SIZE	assign_invert_11/header/header.h	4;"	d
+SIZE	assignment_10/header/header.h	3;"	d
+SIZE	bitcopy_03/header/header.h	3;"	d
+SIZE	bitwise_swap_01/header/header.h	2;"	d
+SIZE	bitwise_swap_02/header/header.h	2;"	d
+SIZE	count_bits_07/header/header.h	2;"	d
+SIZE	lead_trail_bits_08/header/header.h	5;"	d
+SIZE	mac_getbit_12/header/header.h	4;"	d
+SIZE	macro_bits_09/header/header.h	5;"	d
+SIZE	macro_set_bit_05/header/header.h	2;"	d
+SIZE	rotate_bits_06/header/header.h	4;"	d
+SIZE	toggle_ev_od_bits_04/header/header.h	2;"	d
+a	macro_bits_09/b.c	/^extern int a = 10;$/;"	v
+binary_print	assign_invert_11/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	assignment_10/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	bitcopy_03/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	bitwise_swap_01/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	bitwise_swap_02/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	count_bits_07/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	lead_trail_bits_08/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	mac_getbit_12/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	macro_bits_09/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	macro_set_bit_05/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	rotate_bits_06/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+binary_print	toggle_ev_od_bits_04/source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+bit_swap	bitwise_swap_01/source/bit_swap.c	/^void bit_swap(unsigned int *num, unsigned int src_pos, unsigned int dest_pos) {$/;"	f
+bit_swap	bitwise_swap_02/source/bit_swap.c	/^void bit_swap(unsigned int *num1, unsigned int *num2, $/;"	f
+bit_ts	macro_set_bit_05/header/header.h	5;"	d
+bitcopy	bitcopy_03/source/bitcopy.c	/^void bitcopy(unsigned int s_num, unsigned int *d_num, unsigned int n_bits,$/;"	f
+clear_left_most_setbit	macro_bits_09/header/header.h	31;"	d
+clear_right_most_setbit	macro_bits_09/header/header.h	29;"	d
+clear_set_bits	macro_bits_09/header/header.h	40;"	d
+clearbit_count	count_bits_07/source/clearbit_count.c	/^unsigned int clearbit_count(unsigned int num) {$/;"	f
+cnt_leading_cleared_bits	lead_trail_bits_08/source/cnt_lead_clr_bits.c	/^unsigned int cnt_leading_cleared_bits (unsigned int num) {$/;"	f
+cnt_leading_set_bits	lead_trail_bits_08/source/cnt_lead_set_bits.c	/^unsigned int cnt_leading_set_bits (unsigned int num) {$/;"	f
+cnt_trailing_cleared_bits	lead_trail_bits_08/source/cnt_trail_clr_bits.c	/^unsigned int cnt_trailing_cleared_bits (unsigned int num) {$/;"	f
+cnt_trailing_set_bits	lead_trail_bits_08/source/cnt_trail_set_bits.c	/^unsigned int cnt_trailing_set_bits (unsigned int num) {$/;"	f
+even_b_toggle	toggle_ev_od_bits_04/source/even_b_toggle.c	/^unsigned int even_b_toggle(unsigned int num) {$/;"	f
+get_number	macro_bits_09/source/get_number.c	/^unsigned int get_number (void) {$/;"	f
+getbits	mac_getbit_12/header/header.h	8;"	d
+invert_bits	assign_invert_11/source/invert_bits.c	/^void invert_bits(unsigned int *num, unsigned int n_bits, unsigned int pos) {$/;"	f
+main	assign_invert_11/source/test.c	/^int main()$/;"	f
+main	assignment_10/source/test.c	/^int main()$/;"	f
+main	bitcopy_03/source/test.c	/^int main()$/;"	f
+main	bitwise_swap_01/source/test.c	/^int main()$/;"	f
+main	bitwise_swap_02/source/test.c	/^int main()$/;"	f
+main	count_bits_07/source/test.c	/^int main()$/;"	f
+main	lead_trail_bits_08/source/test.c	/^int main()$/;"	f
+main	mac_getbit_12/source/test.c	/^int main()$/;"	f
+main	macro_bits_09/a.c	/^int main()$/;"	f
+main	macro_bits_09/b.c	/^int main() $/;"	f
+main	macro_bits_09/source/test.c	/^int main()$/;"	f
+main	macro_set_bit_05/source/test.c	/^int main()$/;"	f
+main	rotate_bits_06/source/test.c	/^int main()$/;"	f
+main	toggle_ev_od_bits_04/source/test.c	/^int main()$/;"	f
+min_max	macro_bits_09/header/header.h	25;"	d
+my_atoi	assign_invert_11/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	assignment_10/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	bitcopy_03/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	bitwise_swap_01/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	bitwise_swap_02/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	count_bits_07/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	lead_trail_bits_08/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	mac_getbit_12/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	macro_bits_09/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	macro_set_bit_05/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	rotate_bits_06/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+my_atoi	toggle_ev_od_bits_04/source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+odd_b_toggle	toggle_ev_od_bits_04/source/odd_b_toggle.c	/^unsigned int odd_b_toggle(unsigned int num) {$/;"	f
+r_left	rotate_bits_06/header/header.h	9;"	d
+r_nbits_left	rotate_bits_06/header/header.h	13;"	d
+r_nbits_right	rotate_bits_06/header/header.h	16;"	d
+r_right	rotate_bits_06/header/header.h	11;"	d
+set_clear_bits	macro_bits_09/header/header.h	37;"	d
+set_left_most_clearedbit	macro_bits_09/header/header.h	35;"	d
+set_right_most_clearedbit	macro_bits_09/header/header.h	33;"	d
+setbit_count	count_bits_07/source/setbit_count.c	/^unsigned int setbit_count(unsigned int num) {$/;"	f
+setbits	assignment_10/source/setbits.c	/^void setbits(unsigned int *result, unsigned int num,$/;"	f
+switch_fun	lead_trail_bits_08/source/switch_case.c	/^void switch_fun(unsigned int num) { $/;"	f
+switch_fun	macro_bits_09/source/switch_case.c	/^void switch_fun() { $/;"	f
+switch_fun	rotate_bits_06/source/switch_case.c	/^void switch_fun(unsigned int num, unsigned int pos) { $/;"	f
+toggle_bits	macro_bits_09/header/header.h	43;"	d
+validation	assign_invert_11/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	assignment_10/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	bitcopy_03/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	bitwise_swap_01/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	bitwise_swap_02/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	count_bits_07/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	lead_trail_bits_08/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	mac_getbit_12/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	macro_bits_09/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	macro_set_bit_05/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	rotate_bits_06/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f
+validation	toggle_ev_od_bits_04/source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f

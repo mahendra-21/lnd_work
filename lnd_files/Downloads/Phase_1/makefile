@@ -1,0 +1,4 @@
+make :
+	cd recursive && $(MAKE)
+
+

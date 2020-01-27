@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+get_number	get_number.c	/^int get_number (void) {$/;"	f
+main	main.c	/^int main(void)$/;"	f
+merge	merge.c	/^int merge(int arr[], int left, int middle, int right) {$/;"	f
+merge_sort	merge_sort.c	/^int merge_sort(int arr[], int left, int right) {$/;"	f
+my_atoi	my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for my_atoi() function$/;"	f
+partition	partition.c	/^int partition(int arr[], int start, int end) {$/;"	f
+print_array	print_array.c	/^void print_array(int *arr, int num_ele) {$/;"	f
+quick_sort	quick_sort.c	/^int quick_sort(int arr[], int left, int right) {$/;"	f
+sort_switch	sort_switch.c	/^int sort_switch(int arr[], int num_ele) {$/;"	f
+swap_ele	swap.c	/^void swap_ele(int *ptr, int *qtr) {$/;"	f
+validation	validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f

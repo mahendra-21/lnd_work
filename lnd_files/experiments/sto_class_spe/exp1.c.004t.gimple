@@ -1,0 +1,27 @@
+main ()
+{
+  int var.0;
+  int var.1;
+  int var.2;
+  int var.3;
+  int D.1834;
+  int x_var;
+
+  x_var = 3;
+  var.0 = var;
+  var.1 = var.0 + x_var;
+  var = var.1;
+  var.2 = var;
+  printf ("number = %d\n", var.2);
+  var.3 = var;
+  if (var.3 <= 50) goto <D.1832>; else goto <D.1833>;
+  <D.1832>:
+  D.1834 = 0;
+  return D.1834;
+  <D.1833>:
+  main ();
+  D.1834 = 0;
+  return D.1834;
+}
+
+

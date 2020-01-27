@@ -1,0 +1,10 @@
+In this Directory contains the test files.
+
+To build these files :
+    gcc -static -o Exec/f_name.out -g -I ./Header Test/f_name.c -L Library -lalloc
+                            ^                            ^                    ^
+                            |                            |                    |
+                     executable file              any .c file            static library
+
+Example:
+    gcc -static -o Exec/tcase_1.out -g -I./Header Test/tcase_1.c -L./Library -lalloc 

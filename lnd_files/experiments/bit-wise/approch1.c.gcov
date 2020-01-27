@@ -1,0 +1,286 @@
+        -:    0:Source:approch1.c
+        -:    0:Graph:approch1.gcno
+        -:    0:Data:approch1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>  
+        -:    2:#include <stdint.h>
+        -:    3:
+        -:    4:#define MEM_SIZE 1024
+        -:    5:
+        -:    6:char memory[MEM_SIZE];
+        -:    7:static uint32_t curr_mem = MEM_SIZE;
+        -:    8:uint32_t block[16] = {0};
+        -:    9:
+        -:   10:void *my_alloc(size_t size);
+        -:   11:void my_free(void *ptr);
+        -:   12:void binary(void);
+        -:   13:
+        1:   14:int main(void)
+        -:   15:{
+        1:   16:    char *ptr1 = NULL;
+        1:   17:    char *ptr2 = NULL;
+        1:   18:    char *ptr3 = NULL;
+        1:   19:    char *ptr4 = NULL;
+        1:   20:    char *ptr5 = NULL;
+        -:   21:
+        1:   22:    ptr1 = (char *)my_alloc(sizeof(char) * 7);
+        1:   23:    if (NULL == ptr1) {
+    #####:   24:        printf("Malloc failed\n");
+    #####:   25:        return 0;
+        -:   26:    }
+        1:   27:    printf("addr -> %p\n", ptr1);
+        1:   28:    binary();
+        -:   29:    
+        1:   30:    ptr2 = (char *)my_alloc(sizeof(char) * 10);
+        1:   31:    if (NULL == ptr2) {
+    #####:   32:        printf("Malloc failed\n");
+    #####:   33:        return 0;
+        -:   34:    }
+        1:   35:    printf("addr -> %p\n", ptr2);
+        1:   36:    binary();
+        -:   37:
+        1:   38:    my_free(ptr1);
+        1:   39:    printf("After free :\n");
+        1:   40:    binary();
+        -:   41:    
+        1:   42:    ptr3 = (char *)my_alloc(sizeof(char) * 9);
+        1:   43:    if (NULL == ptr3) {
+    #####:   44:        printf("Malloc failed\n");
+    #####:   45:        return 0;
+        -:   46:    }
+        1:   47:    printf("addr -> %p\n", ptr3);
+        1:   48:    binary();
+        -:   49:    
+        1:   50:    ptr4 = (char *)my_alloc(sizeof(char) * 23);
+        1:   51:    if (NULL == ptr4) {
+    #####:   52:        printf("Malloc failed\n");
+    #####:   53:        return 0;
+        -:   54:    }
+        1:   55:    printf("addr -> %p\n", ptr4);
+        1:   56:    binary();
+        -:   57:    
+        1:   58:    my_free(ptr2);
+        1:   59:    printf("After free :\n");
+        1:   60:    binary();
+        -:   61:
+        -:   62:/*
+        -:   63:    my_free(ptr2);
+        -:   64:    printf("After free :\n");
+        -:   65:    binary();
+        -:   66:    
+        -:   67:    ptr5 = (char *)my_alloc(sizeof(char) * 12);
+        -:   68:    if (NULL == ptr5) {
+        -:   69:        printf("Malloc failed\n");
+        -:   70:        return 0;
+        -:   71:    }
+        -:   72:    printf("addr -> %p\n", ptr5);
+        -:   73:    binary();
+        -:   74:  */  
+        1:   75:    return 0;
+        -:   76:}
+        -:   77:
+        4:   78:void *my_alloc(size_t size) {
+        -:   79:    int Oloop;
+        -:   80:    int Iloop;
+        -:   81:    int next;
+        -:   82:    int flag;
+        -:   83:    int n_size;
+        -:   84:    int temp;
+        4:   85:    int bit_count = 0;
+        4:   86:    int count = 0;
+        -:   87:    int help;
+        4:   88:    char *addr = memory;
+        -:   89:
+        4:   90:    if (size > curr_mem)    return NULL;
+        -:   91:
+        4:   92:    n_size = (!(size % 4)) ? (size / 4) : (size / 4) + 1;
+        -:   93:
+       19:   94:    for (Oloop = 31, next = 0; ((Oloop >= 0) && (next < 16)); --Oloop) {
+        -:   95:        
+       19:   96:        if ((block[next] >> Oloop) & 1) {
+        9:   97:            count++;
+        -:   98:            
+        9:   99:            if (Oloop == 0) {
+    #####:  100:                Oloop = 32;
+    #####:  101:                next++;
+        -:  102:            }
+        -:  103:            
+        9:  104:            continue;
+       10:  105:        } else if ((block[next] >> (Oloop + 1)) & 1) {
+        -:  106:
+        4:  107:            if (Oloop == 0) {
+    #####:  108:                Oloop = 32;
+    #####:  109:                next++;
+        -:  110:            }
+        4:  111:            continue;
+        -:  112:
+        -:  113:        } else {
+        6:  114:            flag = block[next] >> Oloop & 1;
+        6:  115:            if (0 == flag) {
+        6:  116:                temp = next;
+        6:  117:                help = 0;
+     2039:  118:                for (Iloop = Oloop; ((Iloop >= 0) && (temp < 16)); --Iloop) {
+        -:  119:
+     2035:  120:                    if (!((block[temp] >> Iloop) & 1)) {
+     2033:  121:                        bit_count++;
+        -:  122:                    } else {
+        2:  123:                        help++;
+        2:  124:                        bit_count -= 1;
+        2:  125:                        break;
+        -:  126:                    }
+        -:  127:                    
+     2033:  128:                    if (Iloop == 0) {
+       64:  129:                        Iloop = 32;
+       64:  130:                        temp ++;
+        -:  131:                    }
+        -:  132:                }
+        -:  133:            
+        6:  134:                if (bit_count >= n_size) {
+       22:  135:                    for (Iloop = Oloop; ((Iloop >= 0) && (n_size > 0)); 
+       14:  136:                            --Iloop, --n_size) {
+        -:  137:                        
+       14:  138:                        block[next] |= 1 << Iloop;
+       14:  139:                        curr_mem -= 4;
+        -:  140:                        
+       14:  141:                        if (Iloop == 0) {
+    #####:  142:                            Iloop = 32;
+    #####:  143:                            next++;
+        -:  144:                        }
+        -:  145:                    }
+        4:  146:                    break;
+        -:  147:                } else {
+        2:  148:                    Oloop = Iloop;
+        2:  149:                    next = temp;
+        2:  150:                    count += help;
+        2:  151:                    bit_count = 0;
+        2:  152:                    continue; 
+        -:  153:                }
+        -:  154:                
+        -:  155:            }
+        -:  156:        }
+        -:  157:        
+        -:  158:    }
+        -:  159:
+        4:  160:    return (addr + (count * 4));
+        -:  161:}
+        -:  162:    
+        2:  163:void my_free(void *ptr) {
+        2:  164:    char *fre = ptr;
+        -:  165:    int n_bits;
+        -:  166:    int loop;
+        -:  167:    int next;
+        2:  168:    int flag = 0;
+        -:  169:    int count;
+        -:  170:
+        -:  171://    n_bits = ((fre - memory) / 4 ) + 1;
+        2:  172:    n_bits = (0 == (fre - memory)) ? 0 : (((fre - memory) / 4) + 1);
+        -:  173:
+      518:  174:    for (loop = 31, next = 0, count = 0; ((loop >= 0) && 
+      514:  175:                (next < 16)); --loop) {
+        -:  176:
+      515:  177:        if (n_bits != 0) {
+        -:  178:            
+      512:  179:            if ((block[next] >> loop) & 1) {
+       12:  180:                if (1 < count) {
+       12:  181:                    n_bits -= count - 1;
+       12:  182:                    if (loop == 0) {
+    #####:  183:                        loop = 32;
+    #####:  184:                        next++;
+        -:  185:                    }
+       12:  186:                    continue;
+        -:  187:                }
+    #####:  188:                if (loop == 0) {
+    #####:  189:                    loop = 32;
+    #####:  190:                    next++;
+        -:  191:                }
+    #####:  192:                n_bits--;
+    #####:  193:                continue;
+        -:  194:            } else {
+      500:  195:                count++;
+      500:  196:                if (loop == 0) {
+       16:  197:                    loop = 32;
+       16:  198:                    next++;
+        -:  199:                }
+      500:  200:                continue;
+        -:  201:            }
+        -:  202:
+        3:  203:        } else if ((!(block[next] >> loop) & 1) && (flag == 1)) {
+    #####:  204:            printf("double free or corruption\n");
+    #####:  205:            break;
+        -:  206:        } else {
+        3:  207:            flag = 0;
+        3:  208:            if (!((block[next] >> loop) & 1))
+        1:  209:                break;
+        2:  210:            block[next] &= ~(1 << loop);
+        2:  211:            curr_mem += 4;
+        -:  212:            
+        2:  213:            if (loop == 0) {
+    #####:  214:                loop = 32;
+    #####:  215:                next++;
+        -:  216:            }
+        -:  217:        }
+        -:  218:    }
+        2:  219:}
+        -:  220:
+        -:  221:#if 0
+        -:  222:void *my_alloc(size_t size) {
+        -:  223:    static int loop;
+        -:  224:    static int next;
+        -:  225:    int size_count = 0;
+        -:  226:    int off_set;
+        -:  227:    char *addr = (char *)memory;
+        -:  228:    int s_size = size;
+        -:  229:
+        -:  230:    if (size > curr_mem)    return NULL;
+        -:  231:
+        -:  232:    off_set = MEM_SIZE - curr_mem;
+        -:  233:
+        -:  234:    if ((size >= 4) || (size < 4)) {
+        -:  235:        for (loop = 31, next = 0, size_count = 0; 
+        -:  236:                ((loop >= 0) && (next < 2)); --loop) {
+        -:  237:
+        -:  238:            if (0 >= s_size)    break;
+        -:  239:
+        -:  240:            if (16 == size_count) {
+        -:  241:                size_count = 0;
+        -:  242:                loop = 32;
+        -:  243:                next++;
+        -:  244:                continue;
+        -:  245:            }
+        -:  246:
+        -:  247:            if ((block[next] >> loop) & 1) {
+        -:  248:                size_count++;
+        -:  249:                continue;
+        -:  250:            } else {
+        -:  251:                block[next] |= 1 << loop;
+        -:  252:                s_size -= 4;
+        -:  253:                size_count++;
+        -:  254:                curr_mem -= 4;
+        -:  255:            }
+        -:  256:        }
+        -:  257:    }
+        -:  258:
+        -:  259:    return (addr + off_set);
+        -:  260:}
+        -:  261:#endif
+        -:  262:
+        6:  263:void binary(void) {
+        -:  264:    int loop;
+        -:  265:    int next;
+        -:  266:
+     3078:  267:    for (loop = 31, next = 0; ((loop >= 0) && (next < 16)); --loop) {
+     3072:  268:        printf("%d", ((block[next] >> loop) & 1));
+        -:  269:        
+     3072:  270:        if (loop % 8 == 0)
+      384:  271:            printf(" ");
+        -:  272:
+     3072:  273:        if (loop == 0) {
+       96:  274:            loop = 32;
+       96:  275:            next++;
+       96:  276:            if (next % 2 == 0)
+       48:  277:                printf("\n");
+        -:  278:        }
+        -:  279:
+        -:  280:    }
+        6:  281:}

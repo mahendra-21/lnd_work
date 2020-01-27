@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+LIMIT	header/header.h	7;"	d
+SIZE	header/header.h	5;"	d
+a	b.c	/^extern int a = 10;$/;"	v
+binary_print	source/binary_print.c	/^void binary_print(unsigned int num) {$/;"	f
+clear_left_most_setbit	header/header.h	31;"	d
+clear_right_most_setbit	header/header.h	29;"	d
+clear_set_bits	header/header.h	40;"	d
+get_number	source/get_number.c	/^unsigned int get_number (void) {$/;"	f
+main	a.c	/^int main()$/;"	f
+main	b.c	/^int main() $/;"	f
+main	source/test.c	/^int main()$/;"	f
+min_max	header/header.h	25;"	d
+my_atoi	source/my_atoi.c	/^int my_atoi(const char *str) \/\/funtion definition for $/;"	f
+set_clear_bits	header/header.h	37;"	d
+set_left_most_clearedbit	header/header.h	35;"	d
+set_right_most_clearedbit	header/header.h	33;"	d
+switch_fun	source/switch_case.c	/^void switch_fun() { $/;"	f
+toggle_bits	header/header.h	43;"	d
+validation	source/validation.c	/^int validation(const char *str, char *buff) \/\/ validation function definition$/;"	f

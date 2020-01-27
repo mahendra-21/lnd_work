@@ -1,0 +1,73 @@
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ 
+ NAME
+        dyn_alloc, dyn_free - allocate and free the memory
+ 
+ SNOPSIS
+        #include <alloc.h>
+
+        void *dyn_alloc(size_t size);
+        void dyn_free(void *ptr);
+
+ DESCRIPTION
+        The dyn_alloc() function allocates size bytes and returns a pointer
+        to the allocated memory which is in statically taken.
+         
+        WORKING OF dyn_alloc() Function:
+            -> If user invokes this function with size 10 bytes, based on
+               4 bytes alignment dyn_alloc() function allocates 12 bytes to
+               the user. And 3 bits are set in the meta_data.
+
+               Bit representation in the meta_data is like this:
+               --> for 10-bytes(12-bytes are allocating) (3 bits are setting)
+               11100000 00000000 00000000 00000000 00000000
+               00000000 00000000 00000000 00000000 00000000
+
+            -> Next time user ask 20 bytes, based on 4-bytes alignment
+               dyn_alloc() function allocates 20 bytes and in meta_data
+               5 bits are set by leaving 1 bit to differentiate the each
+               allocation.
+              
+               Bit representation in the meta_data is like this:
+               --> for 20-bytes(5 bits are set in meta_data)
+               11101111 10000000 00000000 00000000 00000000
+               00000000 00000000 00000000 00000000 00000000
+
+        The dyn_free() function frees the allocted size based up on address
+        passed to the function dyn_free().
+
+        WORKING OF dyn_free() Function:
+            -> In this function user pass the address which is given by the
+               dyn_alloc() function. Based upon the address here freeing the 
+               memory that means clearing the bits by moving that location
+               where has to be clear the bits.
+               
+               Bit representation in the meta_data is like this:
+               --> freeing first allocated memory(12 bytes -> 3 bits are
+                   clearing).
+               00001111 10000000 00000000 00000000 00000000
+               00000000 00000000 00000000 00000000 00000000
+
+       After freeing the memory next time user wants to allocate memory
+       at that time  user asks lessthan or equal to 12 bytes dyn_alloc()
+       function allocates the memory at the same location other-wise allocates
+       at the last allocated position onwards.
+               
+       Bit representation in the meta_data is like this:
+       --> Again user ask's 12 bytes
+           11101111 10000000 00000000 00000000 00000000
+           00000000 00000000 00000000 00000000 00000000
+       
+       --> Again user ask's 30 bytes
+           00001111 10111111 11000000 00000000 00000000
+           00000000 00000000 00000000 00000000 00000000
+ 
+ RETURN VALUES
+    dyn_alloc() funtion returns Address on success and dyn_free() funtion
+    returns nothing. On failure dyn_alloc() function returns NULL.
+
+    If user ask 0-bytes dyn_alloc() function returns address starting address 
+    of free block to the user.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+

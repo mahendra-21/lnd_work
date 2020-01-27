@@ -1,0 +1,10 @@
+main ()
+{
+  int D.1826;
+
+  printf ("num = %d\n", 2);
+  D.1826 = 0;
+  return D.1826;
+}
+
+

@@ -1,0 +1,2 @@
+Enter the Number: str = 49
+Enter the Position: fgets failed to read the data from user

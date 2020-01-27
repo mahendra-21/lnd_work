@@ -1,0 +1,19 @@
+        -:    0:Source:mac.c
+        -:    0:Graph:mac.gcno
+        -:    0:Data:mac.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include<stdio.h>
+        -:    2:#define TOTAL_ELE (sizeof (array) / sizeof(array[0]))
+        -:    3:int array[] = {1, 2, 3, 4, 5, 6, 7};
+        1:    4:int main(void)  
+        -:    5:{                                       
+        -:    6:    int d;                                                                 
+        1:    7:    printf("%d\n",TOTAL_ELE);
+        -:    8:
+        1:    9:    for (d = -1; d < TOTAL_ELE - 1; d++) {
+    #####:   10:        printf("%d\n", array[d + 1]);
+        -:   11:    }
+        -:   12:
+        1:   13:    return 0;
+        -:   14:}

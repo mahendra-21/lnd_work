@@ -1,0 +1,1 @@
+cmd_/home/mahendra/kernel/chld_proc/kmod.ko := ld -r -m elf_i386 -T ../scripts/module-common.lds  --build-id  -o /home/mahendra/kernel/chld_proc/kmod.ko /home/mahendra/kernel/chld_proc/kmod.o /home/mahendra/kernel/chld_proc/kmod.mod.o ;  true
